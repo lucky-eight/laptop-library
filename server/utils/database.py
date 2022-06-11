@@ -4,28 +4,43 @@ import pandas as pd
 conn = db.connect('my_database.db')
 c = conn.cursor()
 
+
 class Database:
 
-    def __init__(self, laptops_csv):
+    def __init__(self, laptops_csv, user_csv, user_address_csv, laptop_assignment_csv):
 
-        # read csv
-        # db = pd.read_csv(laptops_csv, index_col="ID")
-        # print(db)
-        # return db
-        data_frame = pd.read_csv(laptops_csv)
-        new_laptops = data_frame.apply(tuple, axis=1).tolist()
+        # create inventory table
+        c.execute("CREATE TABLE IF NOT EXISTS laptop (id INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, location_area STRING NOT NULL, is_available STRING NOT NULL)")
 
         # populate inventory table
-        c.execute("CREATE TABLE IF NOT EXISTS laptop (id INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, location_area STRING NOT NULL, is_available STRING NOT NULL)")
-        # new_laptops = [(1, 'MacBook Pro 16 inch', 'London', 'True'), (2, 'Dell', 'Amsterdam', 'False')]
+        data_frame = pd.read_csv(laptops_csv)
+        new_laptops = data_frame.apply(tuple, axis=1).tolist()
         c.executemany('INSERT INTO laptop VALUES (?, ?, ?, ?)', new_laptops)
-        c.execute("SELECT * FROM laptop;")
-        print(c.fetchall())
 
-        # create and populate user table
-        c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, surname STRING NOT NULL, email_address STRING)")
+        # create user address table
+        c.execute("CREATE TABLE IF NOT EXISTS user_address (id INTEGER PRIMARY KEY NOT NULL, line_1 STRING NOT NULL, city STRING NOT NULL, post_code STRING NOT NULL)")
 
+        # populate address table
+        data_frame = pd.read_csv(user_address_csv)
+        new_user_addresses = data_frame.apply(tuple, axis=1).tolist()
+        print (new_user_addresses)
+        c.executemany('INSERT INTO user_address VALUES (?, ?, ?, ?)', new_user_addresses)
 
+        # create user table
+        c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, surname STRING NOT NULL, email_address STRING, address_id INTEGER, FOREIGN KEY(address_id) REFERENCES user_address(id))")
+
+        # populate user table
+        data_frame = pd.read_csv(user_csv)
+        new_users = data_frame.apply(tuple, axis=1).tolist()
+        c.executemany('INSERT INTO user VALUES (?, ?, ?, ?, ?)', new_users)
+
+        # create laptop_assignment table
+        c.execute("CREATE TABLE IF NOT EXISTS laptop_assignment (id INTEGER PRIMARY KEY NOT NULL, laptop_id STRING NOT NULL, user_id STRING NOT NULL, FOREIGN KEY(laptop_id) REFERENCES laptop(id), FOREIGN KEY(user_id) REFERENCES user(id))")
+
+        # populate laptop_assignment table
+        data_frame = pd.read_csv(laptop_assignment_csv)
+        new_laptop_assignments = data_frame.apply(tuple, axis=1).tolist()
+        c.executemany('INSERT INTO laptop_assignment VALUES (?, ?, ?)', new_laptop_assignments)
 
 
     def print_inventory_db(self):
