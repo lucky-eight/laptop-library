@@ -1,7 +1,11 @@
-""" Main file for personal website. """
+""" Main file for laptop library website. """
 
-# Imports
+__copyright__ = "Copyright (C) 2022 lucky-8"
+
+# External imports
 from flask import Flask, render_template
+
+# Internal imports
 from utils.database import Database
 import pathlib
 
@@ -17,7 +21,6 @@ def home():
 def about():
     """ About page. """
     return render_template("about.html")
-    # return "About page goes here"
 
 if __name__ == "__main__":
 
