@@ -128,8 +128,20 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add "scoped" attribute to limit CSS to this component only 
+
+FORM HEIGHT -->
 <style scoped>
+
+form {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  height: fit-content;
+  flex-direction: column;
+}
+
  form input {
   height: 40px;
   width: 100%;
@@ -147,4 +159,11 @@ export default {
   flex-direction: row;
   text-align: center;
  }
+
+ button {
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+ }
+
 </style>

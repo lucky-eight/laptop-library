@@ -69,9 +69,3 @@ div {
   height: 100%;
 }
 
-form {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  height: fit-content;
-}
