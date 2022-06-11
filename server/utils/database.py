@@ -71,10 +71,11 @@ class Database:
 
         return updated_database
 
-    def add_user(self, first_name, last_name, email_address, date_requested, address):
+    def add_user(self, user):
+        address = user.address
         """ Add a user to the user and user_address databases. """
         self.c.execute("INSERT INTO user_address(line_1, city, post_code) VALUES (?, ?, ?); ", (address.line_1, address.city, address.post_code))
-        self.c.execute("INSERT INTO user(first_name, last_name, email_address, date_requested, address_id) VALUES (?, ?, ?, ?,?); ", (first_name, last_name, email_address, date_requested, self.c.lastrowid))
+        self.c.execute("INSERT INTO user(first_name, last_name, email_address, date_requested, address_id) VALUES (?, ?, ?, ?,?); ", (user.first_name, user.last_name, user.email_address, user.date_requested, self.c.lastrowid))
         return self.c.lastrowid
 
     def add_laptop_assignment(self, user_id, laptop_id):

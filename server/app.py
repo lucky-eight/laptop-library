@@ -10,7 +10,7 @@ from flask import Flask, render_template
 
 # Internal imports
 from server.utils.database import Database
-from server.utils.common import Address
+from server.utils.common import Address, User
 
 app = Flask(__name__)
 
@@ -34,7 +34,8 @@ if __name__ == "__main__":
     # db.print_inventory_db()
     # print("London", db.find_laptops(["London"]))
     address = Address("line_1", "city", "post_code")
-    db.add_user("first_name", "last_name", "email_address", datetime.datetime.utcnow(), address)
+    user = User("first_name", "last_name", "email_address", datetime.datetime.utcnow(), address)
+    db.add_user(user)
     # db.mark_unavailable(2)
     print(db.add_laptop_assignment(9,6))
 
