@@ -1,6 +1,6 @@
 <template>
-  <header style="height: 50px; width: 100%; background-color: pink;">
-    <div id="logo"></div>
+  <header>
+    <div id="logo"><p>Laptop Library</p></div>
         <nav>
             <a href="#">Get a Laptop</a>
             <a href="#">Register Laptop</a>
