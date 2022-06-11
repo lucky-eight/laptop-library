@@ -21,7 +21,10 @@ def about():
     # return "About page goes here"
 
 if __name__ == "__main__":
-    setup_db.populate_inventory_db()
-    setup_db.print_inventory_db()
-    app.run(debug=True)
 
+    db = setup_db.Database("server/laptops.csv")
+    db.print_inventory_db()
+    app.run()
+
+    # setup_db.populate_inventory_db()
+    # setup_db.print_inventory_db()
