@@ -18,7 +18,12 @@ def about():
     # return "About page goes here"
 
 if __name__ == "__main__":
-    db = Database("test_data/laptop.csv")
+
+
+    db = Database("./server/test_data/laptop.csv",
+                  "./server/test_data/user.csv",
+                  "./server/test_data/user_address.csv",
+                  "./server/test_data/laptop_assignment.csv")
     # db.print_inventory_db()
     # print("London", db.find_laptops(["London"]))
     # db.mark_unavailable(2)
