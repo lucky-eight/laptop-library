@@ -22,6 +22,11 @@ export default {
   html * {
     color: black;
     font-family: 'Jost', sans-serif;
+    box-sizing: border-box;
+  }
+
+  div {
+    height: 100%;
   }
 
   #app {
@@ -35,10 +40,6 @@ export default {
     height: 100vh;
   }
 
-  body div, body div div {
-    height: 100%;
-  }
-
   header {
     height: 50px; 
     width: 100%; 
@@ -46,12 +47,14 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
-    
-
   }
 
   header #logo {
     width: fit-content;
+  }
+
+  header nav {
+    height: 100px;
   }
 
   header nav a {
