@@ -34,8 +34,13 @@ class Database:
         new_users = data_frame.apply(tuple, axis=1).tolist()
         c.executemany('INSERT INTO user VALUES (?, ?, ?, ?, ?)', new_users)
 
-        # # create laptop_assignment table
-        # c.execute("CREATE TABLE IF NOT EXISTS laptop_assignment (id INTEGER PRIMARY KEY NOT NULL, laptop_id STRING NOT NULL, FOREIGN KEY(address_id) REFERENCES user_address(id)user_id STRING NOT NULL)")
+        # create laptop_assignment table
+        c.execute("CREATE TABLE IF NOT EXISTS laptop_assignment (id INTEGER PRIMARY KEY NOT NULL, laptop_id STRING NOT NULL, user_id STRING NOT NULL, FOREIGN KEY(laptop_id) REFERENCES laptop(id), FOREIGN KEY(user_id) REFERENCES user(id))")
+
+        # populate laptop_assignment table
+        data_frame = pd.read_csv(laptop_assignment_csv)
+        new_laptop_assignments = data_frame.apply(tuple, axis=1).tolist()
+        c.executemany('INSERT INTO laptop_assignment VALUES (?, ?, ?)', new_laptop_assignments)
 
 
     def print_inventory_db(self):
