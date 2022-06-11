@@ -1,5 +1,11 @@
 <template>
-  <footer style="height: 50px; width: 100%; background-color: pink;">
+  <footer>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About Us</a></li>
+      <li><a href="#">My Account</a></li>
+      <li><a href="#">Business Account</a></li>
+    </ul>
   </footer>
 </template>
 
