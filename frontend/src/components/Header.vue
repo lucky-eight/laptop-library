@@ -2,10 +2,11 @@
   <header>
     <div id="logo"><p>Laptop Library</p></div>
     <nav>
-      <a href="#">Get a Laptop</a>
-      <a href="#">Register Laptop</a>
-      <a href="#"><img src="../assets/account.svg" /></a>
-      <a href="#"><img src="../assets/help.svg" /></a>
+      <a id="home" href="#">Home</a>
+      <a id="links" href="#">Get a Laptop</a>
+      <a id="links" href="#">Donate Laptops</a>
+      <a id="text" href="#"><img src="../assets/account.svg" /></a>
+      <a id="text" href="#"><img src="../assets/help.svg" /></a>
     </nav>
   </header>
 </template>
@@ -19,7 +20,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header {
-  height: 50px;
+  height: 55px;
   width: 100%;
   background-color: #c8dda4;
   display: flex;
@@ -33,7 +34,8 @@ header #logo {
 
 header nav {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: center;
 }
 
 header nav a {
@@ -41,4 +43,19 @@ header nav a {
   padding-left: 10px;
   align-self: end;
 }
+
+a{
+  color: black;
+  /* padding-bottom: 15px; */
+  text-decoration: none;
+}
+
+#home{
+  text-decoration: underline;
+}
+
+#logo{
+  font-size: 35px;
+}
+
 </style>

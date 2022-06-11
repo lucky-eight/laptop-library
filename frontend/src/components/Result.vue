@@ -27,4 +27,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+  .success-wrapper{
+    text-align: center;
+  }
+  .unsuccess-wrapper{
+    text-align: center;
+  }
+</style>

@@ -1,5 +1,8 @@
 <template>
+
   <form id="application-form" @submit.prevent="handleSubmit">
+    <br>
+    <h3 id="form-explanation">In need of a laptop? Fill in this form and we could send one to you</h3>
 
     <div id="full-name-group" class="form-field-container">
       <input
@@ -134,6 +137,7 @@ export default {
 FORM HEIGHT -->
 <style scoped>
 
+
 form {
   display: flex;
   align-items: center;
@@ -141,6 +145,11 @@ form {
   flex-wrap: wrap;
   height: fit-content;
   flex-direction: column;
+  padding: 15px;
+}
+
+h3{
+  padding: 10px;
 }
 
  form input {
@@ -165,6 +174,11 @@ form {
   width: 100%;
   margin-left: 10px;
   margin-right: 10px;
+ }
+
+ #form_explanation{
+  padding-top: 20px;
+  text-align: center;
  }
 
 </style>
