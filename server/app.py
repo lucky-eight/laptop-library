@@ -7,9 +7,8 @@ from flask import Flask, render_template
 
 # Internal imports
 from server.utils.database import Database
-import pathlib
+from server.utils.common import Address
 
-path = pathlib.Path(__file__).parent.resolve()
 app = Flask(__name__)
 
 @app.route("/")
@@ -31,5 +30,7 @@ if __name__ == "__main__":
                   "./server/test_data/laptop_assignment.csv")
     # db.print_inventory_db()
     # print("London", db.find_laptops(["London"]))
+    address = Address("line_1", "city", "post_code")
+    db.add_user("first_name", "last_name", "email_address", address)
     # db.mark_unavailable(2)
     app.run()

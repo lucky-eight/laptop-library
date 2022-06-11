@@ -6,6 +6,8 @@ __copyright__ = "Copyright (C) 2022 lucky-8"
 import pandas as pd
 import sqlite3 as db
 
+# Internal imports
+from server.utils.common import Address
 
 class Database:
     """ Database class, including functions for interacting with the databases. """
@@ -34,7 +36,7 @@ class Database:
         self.c.executemany('INSERT INTO user_address VALUES (?, ?, ?, ?)', new_user_addresses)
 
         # Create user table
-        self.c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, name STRING NOT NULL, surname STRING NOT NULL, email_address STRING, address_id INTEGER, FOREIGN KEY(address_id) REFERENCES user_address(id))")
+        self.c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, first_name STRING NOT NULL, last_name STRING NOT NULL, email_address STRING, address_id INTEGER, FOREIGN KEY(address_id) REFERENCES user_address(id))")
 
         # Populate user table
         data_frame = pd.read_csv(user_csv)
@@ -70,4 +72,10 @@ class Database:
         updated_database = self.c.fetchall()
 
         return updated_database
+
+    def add_user(self, first_name, last_name, email_address, address):
+        """ Add a user to the user and user_address databases. """
+        self.c.execute("INSERT INTO user_address(line_1, city, post_code) VALUES (?, ?, ?); ", (address.line_1, address.city, address.post_code))
+        self.c.execute("INSERT INTO user(first_name, last_name, email_address, address_id) VALUES (?, ?, ?, ?); ", (first_name, last_name, email_address, self.c.lastrowid))
+        return self.c.lastrowid
 
