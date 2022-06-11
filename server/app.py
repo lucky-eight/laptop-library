@@ -2,6 +2,9 @@
 
 __copyright__ = "Copyright (C) 2022 lucky-8"
 
+# Standard library imports
+import datetime
+
 # External imports
 from flask import Flask, render_template
 
@@ -31,7 +34,7 @@ if __name__ == "__main__":
     # db.print_inventory_db()
     # print("London", db.find_laptops(["London"]))
     address = Address("line_1", "city", "post_code")
-    db.add_user("first_name", "last_name", "email_address", address)
+    db.add_user("first_name", "last_name", "email_address", datetime.datetime.utcnow(), address)
     # db.mark_unavailable(2)
     print(db.add_laptop_assignment(9,6))
 
