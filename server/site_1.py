@@ -2,12 +2,9 @@
 
 # Imports
 from flask import Flask, render_template
-import sqlite3 as db
-import utils.setup_db as setup_db
+from utils.database import Database
 
 app = Flask(__name__)
-conn = db.connect('my_database.db')
-c = conn.cursor()
 
 @app.route("/")
 def home():
@@ -21,8 +18,7 @@ def about():
     # return "About page goes here"
 
 if __name__ == "__main__":
-
-    db = setup_db.Database("server/laptops.csv")
+    db = Database("test_data/laptop.csv")
     db.print_inventory_db()
     app.run()
 
