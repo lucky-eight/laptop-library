@@ -1,0 +1,21 @@
+id,name,location_area,is_available
+1,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",London,TRUE
+2,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",London,TRUE
+3,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",London,FALSE
+4,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",London,TRUE
+5,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",London,TRUE
+6,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",London,TRUE
+7,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",London,FALSE
+8,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",London,FALSE
+9,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",London,TRUE
+10,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",London,TRUE
+11,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",London,FALSE
+12,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",Cambridge,TRUE
+13,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",Cambridge,TRUE
+14,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",Cambridge,TRUE
+15,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",Cambridge,FALSE
+16,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",Cambridge,FALSE
+17,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",Birmingham,FALSE
+18,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",Birmingham,FALSE
+19,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",Birmingham,TRUE
+20,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",Birmingham,TRUE

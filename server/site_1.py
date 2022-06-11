@@ -2,6 +2,7 @@
 
 # Imports
 from flask import Flask, render_template
+from utils.database import Database
 
 app = Flask(__name__)
 
@@ -17,4 +18,9 @@ def about():
     # return "About page goes here"
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    db = Database("test_data/laptop.csv")
+    db.print_inventory_db()
+    app.run()
+
+    # setup_db.populate_inventory_db()
+    # setup_db.print_inventory_db()
