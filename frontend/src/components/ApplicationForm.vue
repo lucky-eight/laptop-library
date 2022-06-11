@@ -1,6 +1,7 @@
 <template>
   <form id="application-form" @submit.prevent="handleSubmit">
-    <div id="full-name-group">
+
+    <div id="full-name-group" class="form-field-container">
       <input
         id="first-name-field"
         type="text"
@@ -9,21 +10,73 @@
         v-model="first_name"
         required
       />
-      <input id="surname-field" type="text" name="last-name" placeholder="Last Name" v-model="last_name" required />
+      <input 
+      id="surname-field" 
+      type="text" name="last-name" 
+      placeholder="Last Name" 
+      v-model="last_name" 
+      required 
+      />
     </div>
-    <input id="email-field" type="text" name="email" placeholder="Email" v-model="email" required />
-    <input
-      id="address-line1-field"
-      type="text"
-      name="address-line1"
-      placeholder="Address Line 1"
-      v-model="address.line_1"
-      required
-    />
-    <input id="address-line2" type="text" name="address-line2" placeholder="Address Line 2" v-model="address.line_2" />
-    <input id="city-field" type="text" name="city" placeholder="City" v-model="address.city" required />
-    <input id="postcode-code" type="text" name="postcode" placeholder="postcode" v-model="address.postcode" required />
-    <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
+
+    <div class="form-field-container">
+      <input 
+      id="email-field" 
+      type="text" 
+      name="email" 
+      placeholder="Email" 
+      v-model="email" 
+      required 
+      />
+    </div>
+
+    <div class="form-field-container">
+      <input
+        id="address-line1-field"
+        type="text"
+        name="address-line1"
+        placeholder="Address Line 1"
+        v-model="address.line_1"
+        required
+      />
+    </div>
+
+    <div class="form-field-container">
+      <input 
+      id="address-line2" 
+      type="text" 
+      name="address-line2" 
+      placeholder="Address Line 2" 
+      v-model="address.line_2" 
+      />
+    </div>
+
+    <div class="form-field-container">
+      <input 
+      id="city-field" 
+      type="text" 
+      name="city" 
+      placeholder="City" 
+      v-model="address.city" 
+      required 
+      />
+    </div>
+    
+    <div class="form-field-container">
+      <input 
+      id="postcode-code" 
+      type="text" 
+      name="postcode" 
+      placeholder="Postcode" 
+      v-model="address.postcode" 
+      required 
+      />
+    </div>
+
+    <div class="form-field-container">
+       <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
+    </div>
+
   </form>
 </template>
 
@@ -76,4 +129,22 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped></style>
+<style scoped>
+ form input {
+  height: 40px;
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+ }
+
+ .form-field-container{
+  width: 200px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+ }
+</style>
