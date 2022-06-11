@@ -1,18 +1,25 @@
 <template>
   <div>
+    <Header />
     <ApplicationForm v-if="!submitted" />
     <Result v-else />
+    <Footer />
   </div>
 </template>
 
 <script>
+import Header from "./Header.vue"
 import ApplicationForm from "./ApplicationForm.vue";
 import Result from "./Result.vue";
+import Footer from "./Footer.vue"
 export default {
   name: "LaptopLibrary",
   components: {
-    Result,
+    Header,
     ApplicationForm,
+    Result,
+    Footer,
+  
   },
 
   data() {
