@@ -19,10 +19,21 @@ def home():
     """ Home page. """
     return render_template("home.html")
 
-@app.route("/about/")
-def about():
-    """ About page. """
-    return render_template("about.html")
+@app.route("/request-laptop/", methods=["POST"])
+def requestLaptop():
+    """ request and check for laptop """
+    # Validate user request, return 400 if unsuccessful
+
+    # Store user details
+
+    # Check for available laptop, return 204 if unsuccessful
+
+    # Assign laptop to user
+
+    # Mark the laptop as unavailable
+    # If there's an available laptop, return success with 202 and laptop details
+
+    return  
 
 if __name__ == "__main__":
 
