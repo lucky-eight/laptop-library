@@ -19,7 +19,9 @@ def about():
 
 if __name__ == "__main__":
     db = Database("test_data/laptop.csv")
-    db.print_inventory_db()
+    # db.print_inventory_db()
+    # print("London", db.find_laptops(["London"]))
+    # db.mark_unavailable(2)
     app.run()
 
     # setup_db.populate_inventory_db()
