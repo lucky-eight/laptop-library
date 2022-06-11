@@ -6,10 +6,20 @@
 
 <script>
 export default {
-  name: "Application Form",
+  name: "ApplicationForm",
 
   data() {
-    return {};
+    return {
+      user: {
+        name: "",
+        email: "",
+        address: {
+          street: "",
+          city: "",
+          postcode: "",
+        },
+      },
+    };
   },
 };
 </script>
