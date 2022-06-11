@@ -1,4 +1,4 @@
-ID,Laptop name,Location,Available
+id,name,location_area,is_available
 1,"MICROSOFT 13 Surface Pro 8 - Intel Core i5, 256 GB SSD, Graphite ",London,TRUE
 2,"APPLE MacBook Air 13.3 (2020) - M1, 256 GB SSD, Space Grey",London,TRUE
 3,"ACER 314 Touch 14 Chromebook - MediaTek MT8183C, 128 GB eMMC, Silver ",London,FALSE
