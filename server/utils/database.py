@@ -2,6 +2,9 @@
 
 __copyright__ = "Copyright (C) 2022 lucky-8"
 
+# Standard library import
+import datetime
+
 # External imports
 import pandas as pd
 import sqlite3 as db
@@ -36,12 +39,13 @@ class Database:
         self.c.executemany('INSERT INTO user_address VALUES (?, ?, ?, ?)', new_user_addresses)
 
         # Create user table
-        self.c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, first_name STRING NOT NULL, last_name STRING NOT NULL, email_address STRING, address_id INTEGER, FOREIGN KEY(address_id) REFERENCES user_address(id))")
+        self.c.execute("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY NOT NULL, first_name STRING NOT NULL, last_name STRING NOT NULL, date_requested TEXT, email_address STRING, address_id INTEGER, FOREIGN KEY(address_id) REFERENCES user_address(id))")
 
         # Populate user table
         data_frame = pd.read_csv(user_csv)
         new_users = data_frame.apply(tuple, axis=1).tolist()
-        self.c.executemany('INSERT INTO user VALUES (?, ?, ?, ?, ?)', new_users)
+        print(new_users)
+        self.c.executemany('INSERT INTO user(id,first_name,last_name,email_address,date_requested,address_id) VALUES(?, ?, ?, ?, ?, ?)', new_users)
 
         # Create laptop_assignment table
         self.c.execute("CREATE TABLE IF NOT EXISTS laptop_assignment (id INTEGER PRIMARY KEY NOT NULL, laptop_id STRING NOT NULL, user_id STRING NOT NULL, FOREIGN KEY(laptop_id) REFERENCES laptop(id), FOREIGN KEY(user_id) REFERENCES user(id))")
@@ -59,7 +63,7 @@ class Database:
     def find_laptops(self, location):
         """ Query the database for all available laptops in a given area. """
 
-        self.c.execute(f"SELECT * FROM laptop WHERE location_area = ? AND is_available=1;", location)
+        self.c.execute("SELECT * FROM laptop WHERE location_area = ? AND is_available=1;", location)
         local_laptops = self.c.fetchall()
         return(local_laptops)
 
@@ -68,7 +72,7 @@ class Database:
 
         self.c.execute("UPDATE laptop SET is_available=0 WHERE id = ?;", (laptop_id,))
 
-        self.c.execute(f"SELECT * FROM laptop;")
+        self.c.execute("SELECT * FROM laptop;")
         updated_database = self.c.fetchall()
 
         return updated_database
@@ -79,3 +83,11 @@ class Database:
         self.c.execute("INSERT INTO user(first_name, last_name, email_address, address_id) VALUES (?, ?, ?, ?); ", (first_name, last_name, email_address, self.c.lastrowid))
         return self.c.lastrowid
 
+    def add_laptop_assignment(self, user_id, laptop_id):
+        """ Add a new user/laptop pairing to the laptop_assignment table. """
+        self.c.execute("INSERT into laptop_assignment(id,laptop_id,user_id) VALUES(NULL,?,?);", (laptop_id,user_id))
+
+        self.c.execute("SELECT * FROM laptop_assignment;")
+        updated_database = self.c.fetchall()
+
+        return updated_database

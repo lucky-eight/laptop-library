@@ -33,4 +33,7 @@ if __name__ == "__main__":
     address = Address("line_1", "city", "post_code")
     db.add_user("first_name", "last_name", "email_address", address)
     # db.mark_unavailable(2)
+    print(db.add_laptop_assignment(9,6))
+
     app.run()
+
