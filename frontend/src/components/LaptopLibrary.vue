@@ -1,18 +1,23 @@
 <template>
   <div>
     <ApplicationForm v-if="!submitted" />
-    <Result v-else :is-success="result.isSuccess" />
+    <Result v-else />
   </div>
 </template>
 
 <script>
-import ApplicationForm from "application-form.vue";
-import Result from "result.vue";
+import ApplicationForm from "./ApplicationForm.vue";
+import Result from "./Result.vue";
 export default {
-  name: "Home",
+  name: "LaptopLibrary",
+  components: {
+    Result,
+    ApplicationForm,
+  },
 
   data() {
     return {
+      submitted: false,
       result: {
         isSuccess: null,
         deliveryDate: "",

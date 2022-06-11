@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "Result",
+  name: "ResultSection",
   props: {
     isSuccess: {
       type: Boolean,
