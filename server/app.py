@@ -6,7 +6,7 @@ __copyright__ = "Copyright (C) 2022 lucky-8"
 from flask import Flask, render_template
 
 # Internal imports
-from utils.database import Database
+from server.utils.database import Database
 import pathlib
 
 path = pathlib.Path(__file__).parent.resolve()
