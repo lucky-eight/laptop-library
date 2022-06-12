@@ -2,7 +2,7 @@
 
   <form id="application-form" @submit.prevent="handleSubmit">
     <br>
-    <h3 id="form-explanation">In need of a laptop? Fill in this form and we could send one to you</h3>
+    <h3 id="form-explanation">In need of a laptop? Use this form to register for a free one!</h3>
 
     <div id="full-name-group" class="form-field-container">
       <input
@@ -77,7 +77,7 @@
     </div>
 
     <div class="form-field-container-button">
-       <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
+       <button id="submit-form" type="submit" :disabled="isPending">Register</button>
     </div>
 
   </form>
@@ -180,7 +180,6 @@ h3{
   align-items: center;
   flex-direction: row;
   text-align: center;
-  padding-left: 58px;
   padding-top: 15px;
  }
 
@@ -191,7 +190,7 @@ h3{
   border-radius: 5px;
   border: none;
   height: 40px;
-  width: 70%;
+  width: 100%;
  }
 
  #form_explanation{
