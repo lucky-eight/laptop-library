@@ -16,9 +16,8 @@ from server.utils.common import Address, User, Laptop
 app = Flask(__name__)
 
 @app.route("/")
-def home():
-    """ Home page. """
-    return render_template("home.html")
+def index():
+    return "Welcome to the dark side :)"
 
 @app.route("/about/")
 def about():
@@ -43,9 +42,18 @@ def requestLaptop():
                 data["email"],
                 datetime.datetime.utcnow(),
                 address)
+    # content_type = request.headers.get('Content-Type')
+    # if (content_type != 'application/json'):
+    #     return 'Content-Type not supported!'
+
+
+    if not valid_user_details:
+
+    # Validate user request, return 400 if unsuccessful
 
     # Store user details
     user_id = db.add_user(user)
+
 
     # Check for available laptop, return 204 if unsuccessful
     laptops_found = (db.find_laptops([address.city]))
