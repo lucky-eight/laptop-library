@@ -18,7 +18,7 @@ app = Flask(__name__)
 def index():
     return "Welcome to the dark side :)"
 
-@app.route("/request-laptop/", methods=["POST"])
+@app.route("/request-laptop/", methods=["GET", "POST"])
 def requestLaptop():
     """ request and check for laptop """
     content_type = request.headers.get('Content-Type')
@@ -26,7 +26,7 @@ def requestLaptop():
         return 'Content-Type not supported!'
 
 
-    if not valid_user_details:
+    # if not valid_user_details:
         
     # Validate user request, return 400 if unsuccessful
     

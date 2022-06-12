@@ -1,5 +1,5 @@
 <template>
-  <form id="application-form" @submit.prevent="handleSubmit">
+  <form id="application-form" @submit="handleSubmit">
 
     <div id="full-name-group" class="form-field-container">
       <input
@@ -74,7 +74,7 @@
     </div>
 
     <div class="form-field-container">
-       <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
+       <!-- <button id="submit-form" type="submit" :disabled="isPending">Submit</button> -->
     </div>
 
   </form>
@@ -102,9 +102,10 @@ export default {
 
   methods: {
     handleSubmit() {
-      this.isPending = true;
+      console.log("Hello")
+      // this.isPending = true;
       axios
-        .post("/submit-form", {
+        .post("/request-laptop", {
           firstName: this.first_name,
           lastName: this.last_name,
           email: this.email,
@@ -122,6 +123,7 @@ export default {
           console.log(error);
           this.isPending = false;
         });
+      // this.isPending
     },
   },
   mounted() {},
