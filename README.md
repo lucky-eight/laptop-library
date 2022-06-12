@@ -30,14 +30,16 @@ We used Vue.js for our frontend and Flask for the backend.
 ![success page](images/success_page.png)
 ![failure page](images/failure_page.png)
 
-## Journeys
+## User journey
+![front page](images/user.jpg)
 
-
+## Brainstorming
+![brainstorming page](images/brain1.png)
+![brainstorming page](images/brain2.png)
+![brainstorming page](images/board.png)
 
 
 ## Assumptions
 - Users are requesting laptops within the UK
 - Laptops limited to certain cities
 - User will be assigned
-
-## Threat Modeling
