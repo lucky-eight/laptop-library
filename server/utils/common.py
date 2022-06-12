@@ -19,3 +19,6 @@ class Laptop:
         self.name = name
         self.location = location
         self.is_available = is_available
+
+    def get_json(self):
+        {"laptopName": self.name, "laptopLocation": self.location}

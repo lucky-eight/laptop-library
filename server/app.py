@@ -32,12 +32,14 @@ def requestLaptop():
     # Validate user request, return 400 if unsuccessful
     data = request.json
     if not validate_input(data):
-        return jsonify({"status": 400})
+        return create_response(400, "Invalid request", False, {})
 
+    # Create address object
     address = Address(data["address"]["line_1"],
                       data["address"]["city"],
                       data["address"]["postcode"])
 
+    # Create user object
     user = User(data["firstName"],
                 data["lastName"],
                 data["email"],
@@ -47,24 +49,22 @@ def requestLaptop():
     # Store user details
     user_id = db.add_user(user)
 
-    # Check for available laptop, return 204 if unsuccessful
+    # Check for available laptop, return 200 if no laptop found
     laptops_found = (db.find_laptops([address.city]))
     if not laptops_found:
-        response = {'status': 204, 'statusMessage': 'No laptop found', 'data': {'laptopAvailable': False , 'laptop' : {} } }
-        # response = {'statusMessage': 'No laptop found', 'data': {'laptopAvailable': False , 'laptop' : {} } }
-        # response.headers["Content-Type"] = "application/json"
-        return jsonify(response)
-
-    laptop = Laptop(*laptops_found[0])
+        return create_response(200, "No laptop found", False, {})
 
     # Assign laptop to user
+    laptop = Laptop(*laptops_found[0])
     db.add_laptop_assignment(user_id, laptop.id)
 
     # Mark the laptop as unavailable
     db.mark_unavailable(laptop.id)
 
     # If there's an available laptop, return success with 202 and laptop details
-    return ('202')
+    laptop_dict = {"laptopName": laptop.name, "laptopLocation": laptop.location}
+
+    return create_response(202, "Success", True, laptop_dict)
 
 def validate_input(data):
 
@@ -80,7 +80,12 @@ def validate_input(data):
 
     return True
 
-
+def create_response(status, statusMessage, laptopAvailable, laptop):
+    reponse = {'statusMessage': statusMessage,
+               'data': {'laptopAvailable': laptopAvailable,
+                        'laptop' : laptop}
+               }
+    return make_response(jsonify({'body': reponse }), status)
 
 if __name__ == "__main__":
 
