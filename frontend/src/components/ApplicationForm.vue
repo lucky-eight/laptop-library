@@ -10,23 +10,23 @@
         v-model="first_name"
         required
       />
-      <input 
-      id="surname-field" 
-      type="text" name="last-name" 
-      placeholder="Last Name" 
-      v-model="last_name" 
-      required 
+      <input
+      id="surname-field"
+      type="text" name="last-name"
+      placeholder="Last Name"
+      v-model="last_name"
+      required
       />
     </div>
 
     <div class="form-field-container">
-      <input 
-      id="email-field" 
-      type="text" 
-      name="email" 
-      placeholder="Email" 
-      v-model="email" 
-      required 
+      <input
+      id="email-field"
+      type="text"
+      name="email"
+      placeholder="Email"
+      v-model="email"
+      required
       />
     </div>
 
@@ -42,34 +42,34 @@
     </div>
 
     <div class="form-field-container">
-      <input 
-      id="address-line2" 
-      type="text" 
-      name="address-line2" 
-      placeholder="Address Line 2" 
-      v-model="address.line_2" 
+      <input
+      id="address-line2"
+      type="text"
+      name="address-line2"
+      placeholder="Address Line 2"
+      v-model="address.line_2"
       />
     </div>
 
     <div class="form-field-container">
-      <input 
-      id="city-field" 
-      type="text" 
-      name="city" 
-      placeholder="City" 
-      v-model="address.city" 
-      required 
+      <input
+      id="city-field"
+      type="text"
+      name="city"
+      placeholder="City"
+      v-model="address.city"
+      required
       />
     </div>
-    
+
     <div class="form-field-container">
-      <input 
-      id="postcode-code" 
-      type="text" 
-      name="postcode" 
-      placeholder="Postcode" 
-      v-model="address.postcode" 
-      required 
+      <input
+      id="postcode-code"
+      type="text"
+      name="postcode"
+      placeholder="Postcode"
+      v-model="address.postcode"
+      required
       />
     </div>
 
@@ -103,8 +103,9 @@ export default {
   methods: {
     handleSubmit() {
       this.isPending = true;
-      axios
-        .post("/submit-form", {
+      const instance = axios.create({baseURL: 'http://localhost:5000'})
+      instance
+        .post("/request-laptop/", {
           firstName: this.first_name,
           lastName: this.last_name,
           email: this.email,
@@ -128,7 +129,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only 
+<!-- Add "scoped" attribute to limit CSS to this component only
 
 FORM HEIGHT -->
 <style scoped>

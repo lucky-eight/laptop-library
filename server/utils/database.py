@@ -12,7 +12,7 @@ class Database:
     def __init__(self, laptops_csv, user_csv, user_address_csv, laptop_assignment_csv):
 
         # Initialise connection to database
-        conn = db.connect('my_database.db')
+        conn = db.connect('my_database.db', check_same_thread=False)
         self.c = conn.cursor()
 
         # Create inventory table
