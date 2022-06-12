@@ -6,7 +6,7 @@ __copyright__ = "Copyright (C) 2022 lucky-8"
 import datetime
 
 # External imports
-from flask import Flask, render_template
+from flask import Flask, render_template, request, jsonify
 
 # Internal imports
 from server.utils.database import Database
@@ -15,16 +15,23 @@ from server.utils.common import Address, User
 app = Flask(__name__)
 
 @app.route("/")
-def home():
-    """ Home page. """
-    return render_template("home.html")
+def index():
+    return "Welcome to the dark side :)"
 
 @app.route("/request-laptop/", methods=["POST"])
 def requestLaptop():
     """ request and check for laptop """
-    # Validate user request, return 400 if unsuccessful
+    content_type = request.headers.get('Content-Type')
+    if (content_type != 'application/json'):
+        return 'Content-Type not supported!'
 
+
+    if not valid_user_details:
+        
+    # Validate user request, return 400 if unsuccessful
+    
     # Store user details
+
 
     # Check for available laptop, return 204 if unsuccessful
 
@@ -32,8 +39,12 @@ def requestLaptop():
 
     # Mark the laptop as unavailable
     # If there's an available laptop, return success with 202 and laptop details
+    
+    return request.json 
 
-    return  
+    def valid_user_details(user_details):
+        return 
+
 
 if __name__ == "__main__":
 
