@@ -1,5 +1,8 @@
 <template>
+
   <form id="application-form" @submit.prevent="handleSubmit">
+    <br>
+    <h3 id="form-explanation">In need of a laptop? Fill in this form and we could send one to you</h3>
 
     <div id="full-name-group" class="form-field-container">
       <input
@@ -73,7 +76,7 @@
       />
     </div>
 
-    <div class="form-field-container">
+    <div class="form-field-container-button">
        <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
     </div>
 
@@ -134,6 +137,7 @@ export default {
 FORM HEIGHT -->
 <style scoped>
 
+
 form {
   display: flex;
   align-items: center;
@@ -141,6 +145,12 @@ form {
   flex-wrap: wrap;
   height: fit-content;
   flex-direction: column;
+  padding: 25px;
+}
+
+h3{
+  padding: 10px;
+  padding-bottom: 40px;
 }
 
  form input {
@@ -153,7 +163,7 @@ form {
  }
 
  .form-field-container{
-  width: 200px;
+  width: 300px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -161,10 +171,31 @@ form {
   text-align: center;
  }
 
+ .form-field-container-button{
+  width: 300px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  padding-left: 58px;
+  padding-top: 15px;
+ }
+
  button {
-  width: 100%;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: #c8dda4;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  width: 70%;
  }
+
+ #form_explanation{
+  padding-top: 20px;
+  text-align: center;
+ }
+
 
 </style>

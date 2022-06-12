@@ -1,10 +1,12 @@
 <template>
   <footer>
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">My Account</a></li>
-      <li><a href="#">Business Account</a></li>
+
+      <!-- <li><a id="link" href="#">Home</a></li> -->
+      <li><a id="link" href="#">About Us</a></li>
+      <li><a id="link" href="#">My Account</a></li>
+      <!-- <li><a id="link" href="#">Business Account</a></li> !-->
+
     </ul>
   </footer>
 </template>
@@ -38,4 +40,14 @@ footer ul li a {
 footer ul li :hover {
   font-weight: bold;
 }
+
+#links{
+  color: black;
+}
+
+a{
+  color: black;
+}
+
+
 </style>
