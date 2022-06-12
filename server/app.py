@@ -34,10 +34,12 @@ def requestLaptop():
     if not validate_input(data):
         return jsonify({"status": 400})
 
+    # Create address object
     address = Address(data["address"]["line_1"],
                       data["address"]["city"],
                       data["address"]["postcode"])
 
+    # Create user object
     user = User(data["firstName"],
                 data["lastName"],
                 data["email"],
