@@ -160,6 +160,8 @@ h3{
   margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
+  border: none;
+  background-color: #c8dda48a;
  }
 
  .form-field-container{
