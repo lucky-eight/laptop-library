@@ -16,6 +16,9 @@ from server.utils.common import Address, User, Laptop
 
 app = Flask(__name__)
 
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
+
 
 @app.route("/")
 def home():
