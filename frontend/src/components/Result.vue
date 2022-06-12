@@ -1,5 +1,5 @@
 <template>
-  <div class="result-wrapper">
+  <div class="result-wrapper"> {{reponse}}
     <div v-if="isSuccess && deliveryDate" class="success-wrapper">
         <h2>We've found you a laptop!</h2>
         <img src="../assets/match_success.png">
@@ -18,14 +18,10 @@
 export default {
   name: "ResultSection",
   props: {
-    isSuccess: {
-      type: Boolean,
-      default: false,
-    },
-    deliveryDate: {
-      type: String,
-      default: "",
-    },
+    response : {
+      type: Object,
+      default: () => ({})
+    }
   },
 };
 </script>

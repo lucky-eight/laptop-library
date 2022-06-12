@@ -1,1 +1,5 @@
 *.db
+
+# python
+*.db-journal
+__pycache__/
