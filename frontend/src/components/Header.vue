@@ -22,7 +22,6 @@ export default {
 header {
   height: 60px;
   width: 100%;
-  background-color: #c8dda4;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -45,12 +44,14 @@ header nav a {
   align-self: end;
 }
 
-a{
+a {
   color: black;
   text-decoration: none;
-
 }
 
+a:hover {
+  font-weight: bold;
+}
 
 #home{
   text-decoration: underline;

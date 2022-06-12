@@ -170,6 +170,8 @@ h3{
   margin-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
+  border: none;
+  background-color: #c8dda48a;
  }
 
  .form-field-container{
@@ -188,7 +190,6 @@ h3{
   align-items: center;
   flex-direction: row;
   text-align: center;
-  padding-left: 58px;
   padding-top: 15px;
  }
 
@@ -199,7 +200,7 @@ h3{
   border-radius: 5px;
   border: none;
   height: 40px;
-  width: 70%;
+  width: 100%;
  }
 
  #form_explanation{
