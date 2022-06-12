@@ -1,93 +1,100 @@
 <template>
+  <div>
 
-  <form id="application-form" @submit.prevent="handleSubmit">
-    <br>
-    <h3 id="form-explanation">In need of a laptop? Fill in this form and we could send one to you</h3>
-
-    <div id="full-name-group" class="form-field-container">
-      <input
-        id="first-name-field"
-        type="text"
-        name="first-name"
-        placeholder="First Name"
-        v-model="first_name"
+    <form v-if="!isSubmitted" id="application-form" @submit.prevent="handleSubmit">
+      <br>
+      <h3 id="form-explanation">In need of a laptop? Fill in this form and we could send one to you</h3>
+  
+      <div id="full-name-group" class="form-field-container">
+        <input
+          id="first-name-field"
+          type="text"
+          name="first-name"
+          placeholder="First Name"
+          v-model="first_name"
+          required
+        />
+        <input
+        id="surname-field"
+        type="text" name="last-name"
+        placeholder="Last Name"
+        v-model="last_name"
         required
-      />
-      <input
-      id="surname-field"
-      type="text" name="last-name"
-      placeholder="Last Name"
-      v-model="last_name"
-      required
-      />
-    </div>
-
-    <div class="form-field-container">
-      <input
-      id="email-field"
-      type="text"
-      name="email"
-      placeholder="Email"
-      v-model="email"
-      required
-      />
-    </div>
-
-    <div class="form-field-container">
-      <input
-        id="address-line1-field"
+        />
+      </div>
+  
+      <div class="form-field-container">
+        <input
+        id="email-field"
         type="text"
-        name="address-line1"
-        placeholder="Address Line 1"
-        v-model="address.line_1"
+        name="email"
+        placeholder="Email"
+        v-model="email"
         required
-      />
-    </div>
+        />
+      </div>
+  
+      <div class="form-field-container">
+        <input
+          id="address-line1-field"
+          type="text"
+          name="address-line1"
+          placeholder="Address Line 1"
+          v-model="address.line_1"
+          required
+        />
+      </div>
+  
+      <div class="form-field-container">
+        <input
+        id="address-line2"
+        type="text"
+        name="address-line2"
+        placeholder="Address Line 2"
+        v-model="address.line_2"
+        />
+      </div>
+  
+      <div class="form-field-container">
+        <input
+        id="city-field"
+        type="text"
+        name="city"
+        placeholder="City"
+        v-model="address.city"
+        required
+        />
+      </div>
+  
+      <div class="form-field-container">
+        <input
+        id="postcode-code"
+        type="text"
+        name="postcode"
+        placeholder="Postcode"
+        v-model="address.postcode"
+        required
+        />
+      </div>
+  
+      <div class="form-field-container-button">
+         <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
+      </div>
+  
+    </form>
 
-    <div class="form-field-container">
-      <input
-      id="address-line2"
-      type="text"
-      name="address-line2"
-      placeholder="Address Line 2"
-      v-model="address.line_2"
-      />
-    </div>
-
-    <div class="form-field-container">
-      <input
-      id="city-field"
-      type="text"
-      name="city"
-      placeholder="City"
-      v-model="address.city"
-      required
-      />
-    </div>
-
-    <div class="form-field-container">
-      <input
-      id="postcode-code"
-      type="text"
-      name="postcode"
-      placeholder="Postcode"
-      v-model="address.postcode"
-      required
-      />
-    </div>
-
-    <div class="form-field-container-button">
-       <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
-    </div>
-
-  </form>
+    <Result v-else/>
+  </div>
 </template>
 
 <script>
 import axios from "axios";
+import Result from "./Result"
 export default {
   name: "ApplicationForm",
-
+  components: {
+    Result
+  },
   data() {
     return {
       first_name: "",
@@ -100,11 +107,13 @@ export default {
         postcode: "",
       },
       isPending: false,
+      isSubmitted: false,
     };
   },
 
   methods: {
     handleSubmit() {
+      this.isSubmitted = true;
       this.isPending = true;
       const instance = axios.create({baseURL: 'http://localhost:5000'})
       instance
@@ -118,11 +127,12 @@ export default {
             postcode: this.address.postcode,
           },
         })
-        .then(function (response) {
+        .then((response) => {
           console.log(response);
+          this.$emit("laptopAvailabilityResponse", response)
           this.isPending = false;
         })
-        .catch(function (error) {
+        .catch((error) => {
           console.log(error);
           this.isPending = false;
         });
