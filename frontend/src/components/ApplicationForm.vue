@@ -126,6 +126,7 @@ export default {
           console.log(error);
           this.isPending = false;
         });
+      // this.isPending
     },
   },
   mounted() {},
