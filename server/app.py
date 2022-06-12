@@ -6,7 +6,8 @@ __copyright__ = "Copyright (C) 2022 lucky-8"
 import datetime
 
 # External imports
-from flask import Flask, render_template, jsonify, make_response
+from flask import Flask, render_template, jsonify, make_response, request
+import json
 
 # Internal imports
 from server.utils.database import Database
@@ -29,9 +30,19 @@ def about():
 def requestLaptop():
     """ request and check for laptop """
     # Validate user request, return 400 if unsuccessful
-    # fake user request
-    address = Address("line_1", "Bahrain", "post_code")
-    user = User("first_name", "last_name", "email_address", datetime.datetime.utcnow(), address)
+    data = request.json
+    if not validate_input(data):
+        return jsonify({"status": 400})
+
+    address = Address(data["address"]["line_1"],
+                      data["address"]["city"],
+                      data["address"]["postcode"])
+
+    user = User(data["firstName"],
+                data["lastName"],
+                data["email"],
+                datetime.datetime.utcnow(),
+                address)
 
     # Store user details
     user_id = db.add_user(user)
@@ -54,6 +65,22 @@ def requestLaptop():
 
     # If there's an available laptop, return success with 202 and laptop details
     return ('202')
+
+def validate_input(data):
+
+    # Check that expected user details are present
+    user_expected = ["firstName", "lastName", "email", "address"]
+    if not (set(user_expected).issubset(set(list(data.keys())))):
+        return False
+
+    # Check that expected address details are present
+    address_expected = ["line_1", "city", "postcode"]
+    if not (set(address_expected).issubset(set(list(data["address"].keys())))):
+        return False
+
+    return True
+
+
 
 if __name__ == "__main__":
 
