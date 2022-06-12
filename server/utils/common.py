@@ -12,3 +12,10 @@ class User:
         self.email_address = email_address
         self.date_requested = date_requested
         self.address = address
+
+class Laptop:
+    def __init__(self, id, name, location, is_available):
+        self.id = id
+        self.name = name
+        self.location = location
+        self.is_available = is_available
