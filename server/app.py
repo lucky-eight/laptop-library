@@ -7,6 +7,7 @@ import datetime
 
 # External imports
 from flask import Flask, render_template, jsonify, make_response, request
+from flask_cors import CORS
 import json
 
 # Internal imports
@@ -14,6 +15,10 @@ from server.utils.database import Database
 from server.utils.common import Address, User, Laptop
 
 app = Flask(__name__)
+
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
+
 
 @app.route("/")
 def home():
