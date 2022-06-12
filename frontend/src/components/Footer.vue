@@ -43,22 +43,11 @@ footer ul li :hover {
 
 #links{
   color: black;
-  /* text-decoration: none; */
 }
 
 a{
   color: black;
 }
-/* .left-half {
-  background-color: #ff9e2c;
-  flex: 1;
-  padding: 1rem;
-}
 
-.right-half {
-  background-color: #b6701e;
-  flex: 1;
-  padding: 1rem;
-} */
 
 </style>

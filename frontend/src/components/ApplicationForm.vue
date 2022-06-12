@@ -76,7 +76,7 @@
       />
     </div>
 
-    <div class="form-field-container">
+    <div class="form-field-container-button">
        <button id="submit-form" type="submit" :disabled="isPending">Submit</button>
     </div>
 
@@ -145,11 +145,12 @@ form {
   flex-wrap: wrap;
   height: fit-content;
   flex-direction: column;
-  padding: 15px;
+  padding: 25px;
 }
 
 h3{
   padding: 10px;
+  padding-bottom: 40px;
 }
 
  form input {
@@ -162,7 +163,7 @@ h3{
  }
 
  .form-field-container{
-  width: 200px;
+  width: 300px;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
@@ -170,15 +171,31 @@ h3{
   text-align: center;
  }
 
+ .form-field-container-button{
+  width: 300px;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: row;
+  text-align: center;
+  padding-left: 58px;
+  padding-top: 15px;
+ }
+
  button {
-  width: 100%;
   margin-left: 10px;
   margin-right: 10px;
+  background-color: #c8dda4;
+  border-radius: 5px;
+  border: none;
+  height: 40px;
+  width: 70%;
  }
 
  #form_explanation{
   padding-top: 20px;
   text-align: center;
  }
+
 
 </style>

@@ -5,8 +5,8 @@
       <a id="home" href="#">Home</a>
       <a id="links" href="#">Get a Laptop</a>
       <a id="links" href="#">Donate Laptops</a>
-      <a id="text" href="#"><img src="../assets/account.svg" /></a>
-      <a id="text" href="#"><img src="../assets/help.svg" /></a>
+      <a id="image" href="#"><img src="../assets/account.svg" /></a>
+      <a id="image" href="#"><img src="../assets/help.svg" /></a>
     </nav>
   </header>
 </template>
@@ -20,7 +20,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 header {
-  height: 55px;
+  height: 60px;
   width: 100%;
   background-color: #c8dda4;
   display: flex;
@@ -30,6 +30,7 @@ header {
 
 header #logo {
   width: fit-content;
+  padding-left: 15px;
 }
 
 header nav {
@@ -46,16 +47,28 @@ header nav a {
 
 a{
   color: black;
-  /* padding-bottom: 15px; */
   text-decoration: none;
+
 }
+
 
 #home{
   text-decoration: underline;
+  padding-bottom: 15px;
+  /* text-transform: uppercase; */
+}
+
+#links{
+   padding-bottom: 15px;
+   /* text-transform: uppercase; */
 }
 
 #logo{
   font-size: 35px;
+}
+
+#image{
+  padding-bottom: 5px;
 }
 
 </style>
