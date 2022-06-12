@@ -26,6 +26,12 @@ We mocked up the design for our main pages on [Figma](https://www.figma.com/file
 We used Vue.js for our frontend and Flask for the backend.
 
 ## Main pages
+![front page](images/front.png)
+![success page](images/success_page.png)
+![failure page](images/failure_page.png)
+
+## Journeys
+
 
 
 
