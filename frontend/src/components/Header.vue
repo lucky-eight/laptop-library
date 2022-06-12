@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div id="logo"><p>Laptop Library</p></div>
+    <div id="logo"><img src="../assets/circular-logo-01.png" /></div>
     <nav>
       <a id="home" href="#">Home</a>
       <a id="links" href="#">Get a Laptop</a>
@@ -66,6 +66,10 @@ a:hover {
 
 #logo{
   font-size: 35px;
+}
+
+#logo img{
+  height: 100%;
 }
 
 #image{
